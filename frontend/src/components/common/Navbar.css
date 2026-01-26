@@ -1,0 +1,131 @@
+/* ===== Navbar ===== */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-inner {
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* ===== Desktop Nav ===== */
+.nav {
+  display: flex;
+  gap: 4.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: var(--btn-font-size);
+  font-weight: 500;
+  color: #374151;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: #e5e7eb;
+}
+
+.nav-link.active {
+  background-color: var(--btn-color-primary);
+  color: #ffffff;
+}
+
+/* ===== Toggle button (hamburger -> X) ===== */
+.nav-toggle {
+  display: none;              /* hidden by default (desktop) */
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 10px;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.nav-toggle:hover {
+  background: #f3f4f6;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: #111827;
+  border-radius: 2px;
+  transition: transform 260ms ease, opacity 160ms ease;
+}
+
+/* Transform into X */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+
+/* ===== Responsive: under 900px ===== */
+@media (max-width: 900px) {
+  .nav-desktop {
+    /* Position it absolutely below the header */
+    position: absolute;
+    top: 100%; /* Starts right at the bottom of the navbar-inner */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex; /* Change from none to flex */
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+    /* Transition setup */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px); 
+    transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s;
+    z-index: -1; 
+  }
+
+
+  /* When the 'show' class is added via the toggle button */
+  .nav-desktop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Slide down to original position */
+  }
+  
+  .nav-link {
+    width: 100%;
+    padding: 10px ;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+}
