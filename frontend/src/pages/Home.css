@@ -1,6 +1,5 @@
 /* Banner Section */
 .hero {
-  margin-top: 80px;
   background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
   color: white;
   padding: 6rem 2rem;
@@ -271,6 +270,19 @@
   margin-bottom: 18px;
   color: #1c7a1c;
   font-size: 13px;
+}
+
+/* Loading button */
+.cta-button:disabled {
+  background-color: #a0a0a0; /* Grey out when sending */
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.8;
+}
+
+/* Optional: Add a simple pulse animation while sending */
+.cta-button.loading {
+  animation: pulse 1.5s infinite;
 }
 
 /* ===== Responsive ===== */

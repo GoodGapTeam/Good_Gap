@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import "./ContactUs.css";
 
@@ -8,6 +9,7 @@ const validatePhone = (phone) =>
   phone === "" || /^[0-9+\-()\s]{7,18}$/.test(phone);
 
 export default function ContactUs() {
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -46,17 +48,39 @@ export default function ContactUs() {
     e.preventDefault();
     if (!validate()) return;
 
-    console.log("Contact Submitted ✅", formData);
-    setSubmitted(true);
+    setIsSending(true);
 
-    setFormData({
-      fullName: "",
-      email: "",
-      subject: "",
-      phone: "",
-      message: "",
-    });
-    setErrors({});
+    const SERVICE_ID = "goodgap.team@gmail.com";
+    const CONTACT_TEMPLATE_ID = "template_fm4niww"; 
+    const PUBLIC_KEY = "qMUuNa6slI0ouzzeN";
+
+    const templateParams = {
+      fullName: formData.fullName,
+      email: formData.email,
+      subject: formData.subject,
+      phone: formData.phone || "Not Provided",
+      message: formData.message,
+      type: "Contact",
+    };
+
+    emailjs.send(SERVICE_ID, CONTACT_TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .then(() => {
+        setSubmitted(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          subject: "",
+          phone: "",
+          message: "",
+        });
+        setErrors({});
+      })
+      .catch(() => {
+        console.error("Submission failed: ", error);
+        alert("Failed to send message. Please try again later.");
+      })
+      .finally(() => setIsSending(false));
+
   };
 
   return (
@@ -68,10 +92,6 @@ export default function ContactUs() {
         <p>
           Get in touch to request a demo or learn more about our AI-powered OA diagnostics.
         </p>
-        <button className="cta-button"
-          onClick={() => { document.getElementById("contactForm").scrollIntoView({ behavior: "smooth" }); }}>
-          Contact Us Today
-        </button>
       </section>
 
       {/* FORM */}
@@ -88,13 +108,13 @@ export default function ContactUs() {
           <form onSubmit={handleSubmit} className="contactForm">
             <div className="field">
               <label>Full Name *</label>
-              <input name="fullName" value={formData.fullName} onChange={handleChange} placeholder="John Doe" />
+              <input name="fullName" value={formData.fullName.trim()} onChange={handleChange} placeholder="John Doe" />
               {errors.fullName && <span className="error">{errors.fullName}</span>}
             </div>
 
             <div className="field">
               <label>Email *</label>
-              <input name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" />
+              <input name="email" value={formData.email.trim()} onChange={handleChange} placeholder="john@example.com" />
               {errors.email && <span className="error">{errors.email}</span>}
             </div>
 
@@ -118,8 +138,12 @@ export default function ContactUs() {
             </div>
 
             <div className="field fullWidth">
-              <button className="cta-button" type="submit">
-                Send Message
+              <button 
+                className={`cta-button ${isSending ? "loading" : ""}`} 
+                type="submit" 
+                disabled={isSending}
+              >
+                {isSending ? "Sending Message..." : "Send Message"}
               </button>
             </div>
           </form>

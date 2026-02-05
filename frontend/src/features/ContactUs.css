@@ -70,6 +70,19 @@
   font-size: 13px;
 }
 
+/* Loading button */
+.cta-button:disabled {
+  background-color: #a0a0a0; /* Grey out when sending */
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.8;
+}
+
+/* Optional: Add a simple pulse animation while sending */
+.cta-button.loading {
+  animation: pulse 1.5s infinite;
+}
+
 @media (max-width: 768px) {
   .contactForm {
     grid-template-columns: 1fr;

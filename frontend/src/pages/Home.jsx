@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
@@ -7,6 +8,7 @@ const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 export default function Home() {
 
   const navigate = useNavigate();
+  const [isSending, setIsSending] = useState(false);
 
   const [formData, setFormData] = useState({
       fullName: "",
@@ -40,16 +42,34 @@ export default function Home() {
     const handleSubmit = (e) => {
       e.preventDefault();
       if (!validate()) return;
+
+      setIsSending(true)
+
+      const SERVICE_ID = "goodgap.team@gmail.com";
+      const FEEDBACK_TEMPLATE_ID = "template_qnjmmem";
+      const PUBLIC_KEY = "qMUuNa6slI0ouzzeN";
   
-      console.log("Demo Request Submitted ✅", formData);
-      setSubmitted(true);
-  
-      setFormData({
-        fullName: "",
-        email: "",
-        message: "",
-      });
-      setErrors({});
+      const templateParams = {
+        from_name: formData.fullName,
+        from_email: formData.email,
+        message: formData.message,
+        type: "Feedback",
+      };
+
+      emailjs.send(SERVICE_ID, FEEDBACK_TEMPLATE_ID, templateParams, PUBLIC_KEY)
+        .then(() => {
+          setSubmitted(true);
+          setFormData({
+            fullName: "",
+            email: "",
+            message: "",
+          });
+          setErrors({});
+        })
+        .catch(() => {
+          alert("Failed to send feedback. Please try again later.");
+        })
+        .finally(() => setIsSending(false));
     };
 
   return (
@@ -149,14 +169,14 @@ export default function Home() {
           <form onSubmit={handleSubmit} className="formGrid">
             <div className="field">
               <label>Full Name *</label>
-              <input name="fullName" value={formData.fullName} onChange={handleChange}
+              <input name="fullName" value={formData.fullName.trim()} onChange={handleChange}
                 placeholder="John Doe" />
               {errors.fullName && <span className="error">{errors.fullName}</span>}
             </div>
 
             <div className="field">
               <label>Email *</label>
-              <input name="email" value={formData.email} onChange={handleChange}
+              <input name="email" value={formData.email.trim()} onChange={handleChange}
                 placeholder="john@example.com" />
               {errors.email && <span className="error">{errors.email}</span>}
             </div>
@@ -168,8 +188,10 @@ export default function Home() {
             </div>
 
             <div className="field fullWidth">
-              <button className="cta-button" type="submit">
-                Submit Feedback
+              <button 
+                className={`cta-button ${isSending ? "loading" : ""}`} 
+                type="submit" disabled={isSending}>
+                {isSending ? "Sending..." : "Submit Feedback"}
               </button>
             </div>
           </form>

@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import "./BookDemo.css";
 
@@ -20,6 +21,7 @@ export default function BookDemo() {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
     setSubmitted(false);
@@ -53,20 +55,43 @@ export default function BookDemo() {
     e.preventDefault();
     if (!validate()) return;
 
-    console.log("Demo Request Submitted ✅", formData);
-    setSubmitted(true);
+    setIsSending(true);
 
-    setFormData({
-      fullName: "",
-      email: "",
-      organization: "",
-      role: "",
-      phone: "",
-      preferredDate: "",
-      preferredTime: "",
-      message: "",
-    });
-    setErrors({});
+    const SERVICE_ID = "#";
+    const TEMPLATE_ID = "#";
+    const PUBLIC_KEY = "#";
+
+    const templateParams = {
+      fullName: formData.fullName,
+      email: formData.email,
+      organization: formData.organization,
+      role: formData.role,
+      phone: formData.phone || "Not provided",
+      preferredDate: formData.preferredDate,
+      preferredTime: formData.preferredTime,
+      message: formData.message,
+    };
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .then((result) => {
+        setSubmitted(true);
+        setFormData({ 
+          fullName: "",
+          email: "",
+          organization: "",
+          role: "",
+          phone: "",
+          preferredDate: "",
+          preferredTime: "",
+          message: "",
+         });
+      })
+      .catch((error) => {
+        alert("Submission failed. Please try again.");
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
   };
 
   return (
@@ -154,8 +179,8 @@ export default function BookDemo() {
             </div>
 
             <div className="field fullWidth">
-              <button className="cta-button" type="submit">
-                Submit Demo Request
+              <button className={`cta-button ${isSending ? "loading" : ""}`} type="submit">
+                {isSending ? "Sending Request..." : "Submit Demo Request"}
               </button>
             </div>
           </form>

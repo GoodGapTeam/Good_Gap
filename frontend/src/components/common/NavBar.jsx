@@ -40,7 +40,7 @@ export default function NavBar() {
           <NavLink to="/" end className={linkClass} onClick={closeMenu}>Home</NavLink>
           <NavLink to="/services" end className={linkClass} onClick={closeMenu}>Services</NavLink>
           <NavLink to="/about" end className={linkClass} onClick={closeMenu}>About</NavLink>
-          <NavLink to="/contact" className={linkClass} onClick={closeMenu}>Contact Us</NavLink>
+          <NavLink to="/contact/contactUs" className={linkClass} onClick={closeMenu}>Contact Us</NavLink>
         </nav>
 
         {/* One button: hamburger -> X */}

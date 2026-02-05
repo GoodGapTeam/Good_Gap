@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Mazharul5868.github.io/Good_Gap",
+  "homepage": "https://GoodGapTeam.github.io/Good_Gap",
   "name": "my-react-app",
   "private": true,
   "version": "0.0.0",
@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.10.1"
