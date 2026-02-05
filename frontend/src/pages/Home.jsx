@@ -50,8 +50,8 @@ export default function Home() {
       const PUBLIC_KEY = "qMUuNa6slI0ouzzeN";
   
       const templateParams = {
-        from_name: formData.fullName,
-        from_email: formData.email,
+        fullName: formData.fullName,
+        email: formData.email,
         message: formData.message,
         type: "Feedback",
       };
