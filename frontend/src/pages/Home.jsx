@@ -169,14 +169,14 @@ export default function Home() {
           <form onSubmit={handleSubmit} className="formGrid">
             <div className="field">
               <label>Full Name *</label>
-              <input name="fullName" value={formData.fullName.trim()} onChange={handleChange}
+              <input name="fullName" value={formData.fullName} onChange={handleChange}
                 placeholder="John Doe" />
               {errors.fullName && <span className="error">{errors.fullName}</span>}
             </div>
 
             <div className="field">
               <label>Email *</label>
-              <input name="email" value={formData.email.trim()} onChange={handleChange}
+              <input name="email" value={formData.email} onChange={handleChange}
                 placeholder="john@example.com" />
               {errors.email && <span className="error">{errors.email}</span>}
             </div>
