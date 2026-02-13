@@ -96,10 +96,17 @@
 }
 
 .benefit-section h3 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     color: #2c5282;
     margin-bottom: 1rem;
 }
+
+
+.benefit-card p {
+    color: #5a6c7d;
+    line-height: 1.7;
+}
+
 
 .section-subtitle {
     text-align: center;
@@ -111,6 +118,7 @@
     margin-right: auto;
 }
 
+
 /* Benefits Grid */
 .benefits-grid {
     display: grid;
@@ -120,43 +128,78 @@
 }
 
 .benefit-card {
-    background: #f8fafc;
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid #e6ecf2;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.04);
 }
 
 .benefit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-color: var(--border-color);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    border-color: #d1d9e2;
 }
 
 .benefit-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #2c5282 0%, #1e3a5f 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    color: white;
-    font-size: 1.8rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #fff;
 }
 
-.benefit-card h3 {
-    font-size: 1.4rem;
-    color: #1e3a5f;
-    margin-bottom: 1rem;
+.benefit-icon img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
 }
 
-.benefit-card p {
-    color: #5a6c7d;
-    line-height: 1.7;
+/* Early Diagnosis - Purple/Blue gradient */
+.benefit-card:nth-child(1) .benefit-icon {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25);
 }
 
+/* Patient-Specific Treatment - Pink/Rose gradient */
+.benefit-card:nth-child(2) .benefit-icon {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.2);
+  border: 2px solid #bae6fd;
+}
+
+/* Activity Map - Cyan/Blue gradient */
+.benefit-card:nth-child(3) .benefit-icon {
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.25);
+}
+
+.benefit-card:hover .benefit-icon {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced hover for each card's icon */
+.benefit-card:nth-child(1):hover .benefit-icon {
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+}
+
+.benefit-card:nth-child(2):hover .benefit-icon {
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+}
+
+.benefit-card:nth-child(3):hover .benefit-icon {
+  box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
+}
+
+.benefit-card:hover .benefit-icon img {
+  transform: scale(1.1);
+}
 
 
 /* ===== Feedback hero layout ===== */

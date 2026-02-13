@@ -6,7 +6,7 @@ import BookDemo from './features/BookDemo'
 import ContactUs from './features/ContactUs'
 import About from './pages/About'
 import Home from './pages/Home'
-import Services from './pages/Services'
+import News from './pages/News'
 
 function App() {
   return (
@@ -15,10 +15,10 @@ function App() {
       <Routes>
         <Route element={<MainLayout/>}>
           <Route path='/' element={<Home/>} />
-          <Route path ='/services' element={<Services/>}/>
           <Route path ='/about' element={<About/>}/>
           <Route path ='/contact/contactUs' element={<ContactUs/>}/>
           <Route path ='/book-demo' element={<BookDemo/>}/>
+          <Route path ='/news' element={<News/>}/>
         </Route>
       </Routes>
     </>

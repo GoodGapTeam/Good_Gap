@@ -21,6 +21,10 @@ venv/
 .venv/
 env/
 ENV/
+.env
+.env.*
+.env.local
+.env.production
 
 # Python build/cache
 .pytest_cache/

@@ -38,7 +38,7 @@ export default function NavBar() {
 
         <nav className={`nav nav-desktop ${open ? "show" : ""}`}>
           <NavLink to="/" end className={linkClass} onClick={closeMenu}>Home</NavLink>
-          <NavLink to="/services" end className={linkClass} onClick={closeMenu}>Services</NavLink>
+          <NavLink to="/news" end className={linkClass} onClick={closeMenu}>News</NavLink>
           <NavLink to="/about" end className={linkClass} onClick={closeMenu}>About</NavLink>
           <NavLink to="/contact/contactUs" className={linkClass} onClick={closeMenu}>Contact Us</NavLink>
         </nav>

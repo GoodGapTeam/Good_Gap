@@ -24,7 +24,7 @@
 /* ===== Desktop Nav ===== */
 .nav {
   display: flex;
-  gap: 4.5rem;
+  gap: 2.8rem;
 }
 
 .nav-link {
