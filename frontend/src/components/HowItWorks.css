@@ -29,7 +29,7 @@
   margin: 0 auto 56px auto;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.04);
+  border: 1px solid #e2e8f0;
   background: #ffffff;
   padding: 24px;
 }
@@ -65,7 +65,7 @@
   background: #f4f6f8;
   border-radius: 16px;
   margin: 0 8px;
-  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.04);
+  border: 1px solid #e2e8f0;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
