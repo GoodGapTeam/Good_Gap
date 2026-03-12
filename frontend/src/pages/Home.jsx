@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import activityIcon from '../assets/activity.svg';
 import diagnosisIcon from '../assets/diagnosis.svg';
 import treatmentIcon from '../assets/treatment.svg';
+import HowItWorks from "../components/HowItWorks";
 import "./Home.css";
 
 const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
@@ -191,6 +192,10 @@ export default function Home() {
           </div>
       </div>
           */}
+
+
+      {/* <-- How it works Section --> */} 
+      <HowItWorks /> 
 
 
       {/* <-- Benefits Section --> */}

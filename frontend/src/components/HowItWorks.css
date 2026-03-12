@@ -1,0 +1,149 @@
+/* ===== How It Works Section ===== */
+.how-it-works {
+  background: #f8fafc;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 3rem auto;
+  margin-top: 0rem;
+}
+
+.hiw-header, .hiw-pipeline-wrap, .hiw-steps{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hiw-header h2 {
+  font-size: 2rem;
+  color: var(--bg-color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.hiw-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 48px;
+}
+
+/* ===== Pipeline Image ===== */
+.hiw-pipeline-wrap {
+  margin: 0 auto 56px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.04);
+  background: #ffffff;
+  padding: 24px;
+}
+
+.hiw-pipeline-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ===== Step Cards ===== */
+.hiw-steps {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hiw-step {
+  position: relative;
+  flex: 1;
+  min-width: 160px;
+  max-width: 200px;
+  height: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 12px;
+  background: #f4f6f8;
+  border-radius: 16px;
+  margin: 0 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hiw-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(11, 48, 65, 0.12);
+}
+
+.hiw-step-number {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--btn-color-primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiw-step-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  margin-top: 8px;
+}
+
+.hiw-step h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--bg-color-dark);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.hiw-step p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Arrow connector between steps */
+.hiw-connector {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .how-it-works {
+    padding: 60px 20px;
+  }
+
+  .hiw-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .hiw-step {
+    width: 100%;
+    max-width: 320px;
+    margin: 0;
+  }
+
+  .hiw-connector {
+    display: none;
+  }
+}
