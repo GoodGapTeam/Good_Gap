@@ -3,9 +3,9 @@ import "./HowItWorks.css";
 
 export default function HowItWorks() {
   const steps = [
-    { label: "Knee MRI", icon: "🩻", desc: "Patient undergoes a standard knee MRI scan" },
-    { label: "Machine Learning", icon: "🤖", desc: "AI model processes and interprets scan data" },
-    { label: "Cartilage Model", icon: "🦴", desc: "Physics-based cartilage model is generated" },
+    { label: "Knee MRI", icon: "🏥", desc: "Patient undergoes a standard knee MRI scan" },
+    { label: "Machine Learning", icon: "📈", desc: "AI model processes and interprets scan data" },
+    { label: "Cartilage Model", icon: "⚛️", desc: "Physics-based cartilage model is generated" },
     { label: "Activity Map", icon: "🗺️", desc: "Personalised activity recommendations produced" },
     { label: "Outcomes", icon: "✅", desc: "Early diagnosis, tailored treatment & biomaterial design" },
   ];
